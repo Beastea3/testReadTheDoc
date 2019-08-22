@@ -1,0 +1,2003 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>fractal_rpc &#8212; Fractal-JSON-RPC v0.1.x documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="fractal-rpc">
+<h1>fractal_rpc<a class="headerlink" href="#fractal-rpc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="indices">
+<h2>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#admin">admin</a></p></li>
+<li><p><a class="reference external" href="#1-addpeer">addPeer</a></p></li>
+<li><p><a class="reference external" href="#2-removepeer">removePeer</a></p></li>
+<li><p><a class="reference external" href="#3-addtrustedpeer">addTrustedPeer</a></p></li>
+<li><p><a class="reference external" href="#4-removetrustedpeer">removeTrustedPeer</a></p></li>
+<li><p><a class="reference external" href="#5-addblack">addBlack</a></p></li>
+<li><p><a class="reference external" href="#6-removeblack">removeBlack</a></p></li>
+<li><p><a class="reference external" href="#7-stopmining">stopMining</a></p></li>
+<li><p><a class="reference external" href="#8-startmining">startMining</a></p></li>
+<li><p><a class="reference external" href="#9-mining">Mining</a></p></li>
+<li><p><a class="reference external" href="#10-generateminingkey">generateMiningKey</a></p></li>
+<li><p><a class="reference external" href="#11-ispackerenable">isPackerEnable</a></p></li>
+<li><p><a class="reference external" href="#12-stoppacking">stopPacking</a></p></li>
+<li><p><a class="reference external" href="#13-startpacking">startPacking</a></p></li>
+<li><p><a class="reference external" href="#14-ispacking">isPacking</a></p></li>
+<li><p><a class="reference external" href="#ftl">ftl</a></p></li>
+<li><p><a class="reference external" href="#1-addpeer-1">addPeer</a></p></li>
+<li><p><a class="reference external" href="#2-genesis">genesis</a></p></li>
+<li><p><a class="reference external" href="#3-getblock">getBlock</a></p></li>
+<li><p><a class="reference external" href="#4-getblockbyheight">getBlockByHeight</a></p></li>
+<li><p><a class="reference external" href="#5-blockheight">blockHeight</a></p></li>
+<li><p><a class="reference external" href="#6-getbackwardblocks">getBackwardBlocks</a></p></li>
+<li><p><a class="reference external" href="#7-getancestorblocks">getAncestorBlocks</a></p></li>
+<li><p><a class="reference external" href="#8-getdescendantblocks">getDescendantBlocks</a></p></li>
+<li><p><a class="reference external" href="#9-getnearbyblocks">getNearbyBlocks</a></p></li>
+<li><p><a class="reference external" href="#10-getbalance">getBalance</a></p></li>
+<li><p><a class="reference external" href="#11-getstorageat-undo">getStorageAt UNDO</a></p></li>
+<li><p><a class="reference external" href="#12-getcode">getCode</a></p></li>
+<li><p><a class="reference external" href="#13-getcontractowner">getContractOwner</a></p></li>
+<li><p><a class="reference external" href="#14-getlogs-undo">getLogs UNDO</a></p></li>
+<li><p><a class="reference external" href="#15-coinbase">coinbase</a></p></li>
+<li><p><a class="reference external" href="#16-protocolversion">protocolVersion</a></p></li>
+<li><p><a class="reference external" href="#17-chainid">chainId</a></p></li>
+<li><p><a class="reference external" href="#net">net</a></p></li>
+<li><p><a class="reference external" href="#1-listening">listening</a></p></li>
+<li><p><a class="reference external" href="#2-peercount-unwork">peerCount UNWORK</a></p></li>
+<li><p><a class="reference external" href="#3-peers-unwork">peers UNWORK</a></p></li>
+<li><p><a class="reference external" href="#4-nodeinfo">nodeInfo</a></p></li>
+<li><p><a class="reference external" href="#5-nodeinfo-copy">nodeInfo Copy</a></p></li>
+<li><p><a class="reference external" href="#packer">packer</a></p></li>
+<li><p><a class="reference external" href="#1-gettxpackagebyhash">getTxPackageByHash</a></p></li>
+<li><p><a class="reference external" href="#2-sendrawtransaction-undo">sendRawTransaction UNDO</a></p></li>
+<li><p><a class="reference external" href="#tx_pool">tx_pool</a></p></li>
+<li><p><a class="reference external" href="#1-gettxpackagebyhash-undo">getTxPackageByHash UNDO</a></p></li>
+<li><p><a class="reference external" href="#2-content">content</a></p></li>
+<li><p><a class="reference external" href="#3-status">status</a></p></li>
+<li><p><a class="reference external" href="#4-inspenct">inspenct</a></p></li>
+<li><p><a class="reference external" href="#5-gettransactionnonce">getTransactionNonce</a></p></li>
+<li><p><a class="reference external" href="#6-getblocktransactioncountbyhash">getBlockTransactionCountByHash</a></p></li>
+<li><p><a class="reference external" href="#7-sendrawtransaction-undo">SendRawTransaction UNDO</a></p></li>
+<li><p><a class="reference external" href="#8-encodeaction">encodeAction</a></p></li>
+<li><p><a class="reference external" href="#9-pendingtransactions">pendingTransactions</a></p></li>
+<li><p><a class="reference external" href="#10-gasprice">gasPrice</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="admin">
+<h2>admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="addpeer">
+<h3>1. addPeer<a class="headerlink" href="#addpeer" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_addPeer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removepeer">
+<h3>2. removePeer<a class="headerlink" href="#removepeer" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_removePeer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addtrustedpeer">
+<h3>3. addTrustedPeer<a class="headerlink" href="#addtrustedpeer" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_addTrustedPeer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removetrustedpeer">
+<h3>4. removeTrustedPeer<a class="headerlink" href="#removetrustedpeer" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_removeTrustedPeer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addblack">
+<h3>5. addBlack<a class="headerlink" href="#addblack" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_addBlack&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removeblack">
+<h3>6. removeBlack<a class="headerlink" href="#removeblack" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_removeBlack&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stopmining">
+<h3>7. stopMining<a class="headerlink" href="#stopmining" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_stopMining&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;enode://9fb5d28a4f0d086521bb3824782ad8b3d982190afc839200276e926dd2661b804854e609cd95a7bbc8969f2d513aac6a74c7c839409e786697d01ceb50fb2919@210.22.171.162:30304&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="startmining">
+<h3>8. startMining<a class="headerlink" href="#startmining" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_startMining&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mining">
+<h3>9. Mining<a class="headerlink" href="#mining" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_mining&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generateminingkey">
+<h3>10. generateMiningKey<a class="headerlink" href="#generateminingkey" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_generateMiningKey&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ispackerenable">
+<h3>11. isPackerEnable<a class="headerlink" href="#ispackerenable" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_isPackerEnable&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stoppacking">
+<h3>12. stopPacking<a class="headerlink" href="#stoppacking" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_stopPacking&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="startpacking">
+<h3>13. startPacking<a class="headerlink" href="#startpacking" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_startPacking&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ispacking">
+<h3>14. isPacking<a class="headerlink" href="#ispacking" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;admin_isPacking&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ftl">
+<h2>ftl<a class="headerlink" href="#ftl" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>1. addPeer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_headBlock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="genesis">
+<h3>2. genesis<a class="headerlink" href="#genesis" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_genesis&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getblock">
+<h3>3. getBlock<a class="headerlink" href="#getblock" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getBlock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getblockbyheight">
+<h3>4. getBlockByHeight<a class="headerlink" href="#getblockbyheight" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getBlockByHeight&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0x2&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="blockheight">
+<h3>5. blockHeight<a class="headerlink" href="#blockheight" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_blockHeight&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getbackwardblocks">
+<h3>6. getBackwardBlocks<a class="headerlink" href="#getbackwardblocks" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getBackwardBlocks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getancestorblocks">
+<h3>7. getAncestorBlocks<a class="headerlink" href="#getancestorblocks" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getAncestorBlocks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getdescendantblocks">
+<h3>8. getDescendantBlocks<a class="headerlink" href="#getdescendantblocks" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getDescendantBlocks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getnearbyblocks">
+<h3>9. getNearbyBlocks<a class="headerlink" href="#getnearbyblocks" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getNearbyBlocks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getbalance">
+<h3>10. getBalance<a class="headerlink" href="#getbalance" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getBalance&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">,</span> <span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getstorageat-undo">
+<h3>11. getStorageAt UNDO<a class="headerlink" href="#getstorageat-undo" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getStorageAt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">,</span> <span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getcode">
+<h3>12. getCode<a class="headerlink" href="#getcode" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getCode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">,</span> <span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getcontractowner">
+<h3>13. getContractOwner<a class="headerlink" href="#getcontractowner" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getContractOwner&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getlogs-undo">
+<h3>14. getLogs UNDO<a class="headerlink" href="#getlogs-undo" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_getContractOwner&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coinbase">
+<h3>15. coinbase<a class="headerlink" href="#coinbase" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_coinbase&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xa04358d378cf97a933eb09b6014f4f118378e9f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="protocolversion">
+<h3>16. protocolVersion<a class="headerlink" href="#protocolversion" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_protocolVersion&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="chainid">
+<h3>17. chainId<a class="headerlink" href="#chainid" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;ftl_chainId&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="net">
+<h2>net<a class="headerlink" href="#net" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="listening">
+<h3>1. listening<a class="headerlink" href="#listening" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;net_listening&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="peercount-unwork">
+<h3>2. peerCount UNWORK<a class="headerlink" href="#peercount-unwork" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;net_peerCount&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="peers-unwork">
+<h3>3. peers UNWORK<a class="headerlink" href="#peers-unwork" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;net_peers&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nodeinfo">
+<h3>4. nodeInfo<a class="headerlink" href="#nodeinfo" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;net_nodeInfo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nodeinfo-copy">
+<h3>5. nodeInfo Copy<a class="headerlink" href="#nodeinfo-copy" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;net_version&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="packer">
+<h2>packer<a class="headerlink" href="#packer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gettxpackagebyhash">
+<h3>1. getTxPackageByHash<a class="headerlink" href="#gettxpackagebyhash" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;pack_getTxPackageByHash&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xfda689596a9a0f1e184b972b3ca2601f03c0d52abf1db7604356d1eec22f54f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sendrawtransaction-undo">
+<h3>2. sendRawTransaction UNDO<a class="headerlink" href="#sendrawtransaction-undo" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;pack_getTxPackageByHash&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xfda689596a9a0f1e184b972b3ca2601f03c0d52abf1db7604356d1eec22f54f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tx-pool">
+<h2>tx_pool<a class="headerlink" href="#tx-pool" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gettxpackagebyhash-undo">
+<h3>1. getTxPackageByHash UNDO<a class="headerlink" href="#gettxpackagebyhash-undo" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_getTransactionByHash&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xfda689596a9a0f1e184b972b3ca2601f03c0d52abf1db7604356d1eec22f54f4&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="content">
+<h3>2. content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_content&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="status">
+<h3>3. status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_status&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspenct">
+<h3>4. inspenct<a class="headerlink" href="#inspenct" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_inspect&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gettransactionnonce">
+<h3>5. getTransactionNonce<a class="headerlink" href="#gettransactionnonce" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_getTransactionNonce&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xf13376df4b6e043d0e3e6d6561272875aa287294&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getblocktransactioncountbyhash">
+<h3>6. getBlockTransactionCountByHash<a class="headerlink" href="#getblocktransactioncountbyhash" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_getBlockTransactionCountByHash&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>7. SendRawTransaction UNDO<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_SendRawTransaction&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encodeaction">
+<h3>8. encodeAction<a class="headerlink" href="#encodeaction" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_encodeAction&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0xd1c0f4f8e1ef3fb27bc19a3d0641f2e28cc61689340b10f73b3fdc65d0955fdf&quot;</span><span class="p">,</span> <span class="s2">&quot;sdada&quot;</span><span class="p">,</span> <span class="s2">&quot;sadasd&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pendingtransactions">
+<h3>9. pendingTransactions<a class="headerlink" href="#pendingtransactions" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span><span class="m">8545</span>/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_pendingTransactions&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gasprice">
+<h3>10. gasPrice<a class="headerlink" href="#gasprice" title="Permalink to this headline">¶</a></h3>
+<p><strong>*Endpoint:*</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Method: GET
+Type: RAW
+URL: http://<span class="o">{{</span>host<span class="o">}}</span>:8545/rpc
+</pre></div>
+</div>
+<p><strong>*Headers:*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 39%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>application/json</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Body:*</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;jsonrpc&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;txpool_gasPrice&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a class="reference external" href="#fractal_rpc">Back to top</a> &gt; Made with ♥ by
+<a class="reference external" href="https://github.com/thedevsaddam">thedevsaddam</a> | Generated at:
+2019-08-22 10:50:55 by
+<a class="reference external" href="https://github.com/thedevsaddam/docgen">docgen</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Fractal-JSON-RPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Fractal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
