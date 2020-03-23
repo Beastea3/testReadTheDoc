@@ -6,5 +6,6 @@
         * [Intro of Risk Management](Finance/FRM/Intro of Risk Management.md)
     * [CFA](Finance/CFA/README.md)
 * [Coding](Coding/README.md)
+    * [Algorithm](Coding/Algorithm/README.md)
 
 
