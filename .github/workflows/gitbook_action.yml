@@ -19,22 +19,25 @@ jobs:
     runs-on: [self-hosted, linux]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-     steps:
-    - name: 拉取代码
-      uses: actions/checkout@v1
-    - name: 配置环境
-      uses: actions/setup-node@v1
-      with: 
-        node-version: ${{ matrix.node_version }}
-    - name: 安装gitbook及插件
-      # bat命令都用call调用防止跨命令执行
-      run: |
-        call npm install  -g gitbook-cli
-        call npm install -g gitbook-summary
-        call gitbook -v
-        call gitbook install
-        
-    - name: 生成_book
-      run: |
-        call book sm
-        call gitbook build
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v1
+      - name: 配置环境
+        uses: actions/setup-node@v1
+        with: 
+          node-version: ${{ matrix.node_version }}
+      - name: 安装gitbook及插件
+        # bat命令都用call调用防止跨命令执行
+        run: |
+          call npm install  -g gitbook-cli
+          call npm install -g gitbook-summary
+          call gitbook -v
+          call gitbook install
+          
+      - name: 生成_book
+        run: |
+          call book sm
+          call gitbook build
+
+      env:
+      CI: true
