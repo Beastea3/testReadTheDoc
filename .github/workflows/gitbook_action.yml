@@ -29,12 +29,14 @@ jobs:
       - name: 安装gitbook及插件
         # bat命令都用call调用防止跨命令执行
         run: |
-          npm install  -g gitbook-cli
+          npm install -g gitbook-cli
           npm install -g gitbook-summary
           gitbook -v
           gitbook install
-          
+        shell: bash
+
       - name: 生成_book
         run: |
           book sm
           gitbook build
+        shell: bash
