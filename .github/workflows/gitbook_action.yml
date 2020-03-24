@@ -22,10 +22,10 @@ jobs:
     steps:
       - name: 拉取代码
         uses: actions/checkout@v1
-      - name: 配置环境
-        uses: actions/setup-node@v1
-        with: 
-          node-version: ${{ matrix.node_version }}
+      # - name: 配置环境
+      #   uses: actions/setup-node@v1
+      #   with: 
+      #     node-version: ${{ matrix.node_version }}
       - name: 安装gitbook及插件
         # bat命令都用call调用防止跨命令执行
         run: npm install -g gitbook-cli
