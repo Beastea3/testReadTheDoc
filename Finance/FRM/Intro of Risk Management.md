@@ -61,7 +61,7 @@
 
 ### Expected Loss can be calculated by:
 
-EL = LGD(Loss Given Default) * Probability of Default(PD) * Explosure at Default(EAD)
+EL = LGD(Loss Given Default) \* Probability of Default(PD) \* Explosure at Default(EAD)
 
 ### VaR: Value at Risk;
   - Firstly used by JP morgan to assess the amount of loss in a given level of confidence;

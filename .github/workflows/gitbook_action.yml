@@ -14,7 +14,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [11.x]
+        node-version: [8.x, 10.x, 12.x]
     # The type of runner that the job will run on
     runs-on: [self-hosted, linux]
 
@@ -28,15 +28,14 @@ jobs:
           node-version: ${{ matrix.node_version }}
       - name: 安装gitbook及插件
         # bat命令都用call调用防止跨命令执行
-        run: |
-          npm install -g gitbook-cli
-          npm install -g gitbook-summary
-          gitbook -v
-          gitbook install
-        shell: bash
+        run: npm install -g gitbook-cli
+      - name: 安装gitbook-summary
+        run: npm install -g gitbook-summary
+      - name: gitbook -v
+        run: gitbook -v
+      - name: 安装dependencies
+        run: gitbook install
 
       - name: 生成_book
-        run: |
-          book sm
-          gitbook build
+        run: gitbook build
         shell: bash
