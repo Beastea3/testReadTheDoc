@@ -30,7 +30,7 @@
 ```
 
 ### Credit Risk may increase if:
- - Less and large amount of loan instead of more and small amount of loan;
+ - Less and large amount of loan instead of more and small amount of loan; 
  - The loans are highly positively correlated;
  - ~~Macroeconomics fall down~~ The expossure, loss given default and probability of default are positively correlated;
 
