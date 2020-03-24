@@ -38,6 +38,5 @@ jobs:
         run: |
           call book sm
           call gitbook build
-
       env:
       CI: true
