@@ -1,5 +1,14 @@
 {
-    "plugins": ["collapsible-menu", "insert-logo", "back-to-top-button", "tbfed-pagefooter"],
+    "plugins": [
+        "collapsible-menu",
+        "insert-logo",
+        "back-to-top-button",
+        "tbfed-pagefooter",
+        "-highlight",
+        "prism",
+        "prism-themes",
+        "katex"
+    ],
     "pluginsConfig": {
         "insert-logo": {
             "url": "/black-batman.jpg",
@@ -9,6 +18,11 @@
             "copyright":"",
             "modify_label": "Last Updated: ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "prism": {
+            "css": [
+              "prismjs/themes/prism-okaidia.css"
+            ]
         }
     }
 }

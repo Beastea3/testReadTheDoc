@@ -1,3 +1,3 @@
 # Algorithms
 
-## Algo 1 
+Introduction to Algorithms -- Thomas H. Cormen et al.
