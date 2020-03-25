@@ -1,3 +1,14 @@
 {
-    "plugins": ["collapsible-menu"]
+    "plugins": ["collapsible-menu", "insert-logo", "back-to-top-button", "tbfed-pagefooter"],
+    "pluginsConfig": {
+        "insert-logo": {
+            "url": "/black-batman.jpg",
+            "style": "background: none;"
+        },
+        "tbfed-pagefooter": {
+            "copyright":"",
+            "modify_label": "Last Updated: ",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        }
+    }
 }
