@@ -77,4 +77,26 @@ EL = LGD(Loss Given Default) \* Probability of Default(PD) \* Explosure at Defau
   - RAROC = Reaward / Risk
   - RAROC = After Tax Net Risk-Adjusted Expected Return / Economic Capital
 
+### Risk Management RoadMap, 5 Milestones
 
+1. Identify Risk Appetite;
+2. Map risks;
+3. Operationalize;
+4. Implement;
+5. ~~Day-to-day review~~ Re-evaluate everyday;
+
+### What is the Risk Appetite? What is the Risk Capacity?
+
+**Risk appetite** describes the amount and the type of risks which the firm is willing to take;
+
+**Risk capacity** describes the maximum amount of risk which a firm can absorb;
+
+### FRB(Federal Reserve Board) conduct 2 stress testing exercises:
+
+1. Dot-Frank Act Stress Test for asset size larger than USD 10 billion;
+2. Comprehensive Capital Analysis and Review for asset size larger than USD 50 billion;
+
+### Most institutions set two types of limits:
+
+1. Tier 1, risk that is specified, an overall limit by asset class;
+2. Tier 2, more generalized risk related areas of business activities;
