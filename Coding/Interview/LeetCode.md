@@ -363,4 +363,64 @@ public int threeSumClosest(int[] nums, int target) {
 }
 ```
 
+## 17. 电话号码的数字组合
+回溯算法
+```java
+    Map<String, String> numChar = new HashMap() {{
+        put("2", "abc");
+        put("3", "def");
+        put("4", "ghi");
+        put("5", "jkl");
+        put("6", "mno");
+        put("7", "pqrs");
+        put("8", "tuv");
+        put("9", "wxyz");
+    }};
+
+    List<String> output = new ArrayList<>();
+    public List<String> letterCombinations(String digits) {
+        if (digits.length() > 0) {
+            backtrack("", digits);
+        }
+        return output;
+    }
+
+    void backtrack(String prefix, String remainDigits) {
+        if (remainDigits.length() == 0) {
+            output.add(prefix);
+        } else {
+            String digit = remainDigits.substring(0, 1);
+            String letters = numChar.get(digit);
+            for(int i = 0; i< letters.length(); i++) {
+                backtrack(prefix + letters.charAt(i), remainDigits.substring(1));
+            }
+        }
+    }
+```
+
+## 19. 删除链表的倒数第N个节点
+
+考察链表的特性；要求只一次循环
+
+```java
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode i = head, j = head;
+        int k = 0;
+        while(k < n) {
+            j = j.next;
+            k++;
+        }
+        if (j == null) {
+            head = head.next;
+            return head;
+        }
+        while(j.next != null) {
+            j = j.next;
+            i = i.next;
+        }
+        i.next = i.next.next;
+        return head;
+    }
+```
+
 
