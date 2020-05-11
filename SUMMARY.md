@@ -5,6 +5,8 @@
     * [FRM](Finance/FRM/README.md)
         * [Intro of Risk Management](Finance/FRM/Intro of Risk Management.md)
     * [CFA](Finance/CFA/README.md)
+    * [OTC](Finance/OTC/README.md)
+        * [Option Strategy](Finance/OTC/Option Strategy.md)
 * [Technology](Technology/README.md)
     * [BasicSkills](Technology/Basic Skills/README.md)
         * [算法基础](Technology/Basic Skills/算法基础.md)
