@@ -11,7 +11,7 @@
 
     - [Basic Skills](Technology/Basic Skills/README.md)
 
-        - [2. Add two numbers](Technology/Basic Skills/LeetCode.md)
+        - [Leetcode](Technology/Basic Skills/LeetCode.md)
         - [算法基础](Technology/Basic Skills/算法基础.md)
         - [设计模式](Technology/Basic Skills/设计模式.md)
     - [BlockChain](Technology/BlockChain/README.md)
