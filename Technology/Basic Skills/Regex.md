@@ -10,7 +10,7 @@ There are 4 pattern operators in this category:
 
 **Positive lookbehind**: Matches a group before the main expression without including the result;
 
-**Negative lookahead**: Specifies a group that can not match before the main expression (if it matches, the result is discarded);
+**Negative lookabehind**: Specifies a group that can not match before the main expression (if it matches, the result is discarded);
 
 > **Warning**: lookbehind may not be supported by some browsers like Safari and most browsers on mobile devices;
 

@@ -4,15 +4,15 @@
     - [Derivatives](Finance/Derivatives/README.md)
 
         - [Option Strategy](Finance/Derivatives/Option Strategy.md)
-    - [FRM](Finance/FRM/README.md)
+    - [FRM](Finance/FRM/Intro of Risk Management.md)
 
         - [Introduction of Risk Management](Finance/FRM/Intro of Risk Management.md)
 - [Technology](Technology/README.md)
 
-    - [Basic Skills](Technology/Basic Skills/README.md)
+    - [Basic Skills](Technology/Basic Skills/算法基础.md)
 
-        - [Leetcode](Technology/Basic Skills/LeetCode.md)
         - [算法基础](Technology/Basic Skills/算法基础.md)
+        - [Leetcode](Technology/Basic Skills/LeetCode.md)
         - [设计模式](Technology/Basic Skills/设计模式.md)
         - [正则表达式](Technology/Basic Skills/Regex.md)
     - [BlockChain](Technology/BlockChain/README.md)
