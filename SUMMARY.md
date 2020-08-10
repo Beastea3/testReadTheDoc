@@ -15,6 +15,7 @@
         - [Leetcode](Technology/Basic Skills/LeetCode.md)
         - [设计模式](Technology/Basic Skills/设计模式.md)
         - [正则表达式](Technology/Basic Skills/Regex.md)
+        - [BackTracking](Technology/Basic Skills/BackTracking.md)
     - [BlockChain](Technology/BlockChain/BFT vs pBFT.md)
 
         - [BFT](Technology/BlockChain/BFT vs pBFT.md)
