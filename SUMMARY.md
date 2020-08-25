@@ -7,6 +7,7 @@
     - [FRM](Finance/FRM/Intro of Risk Management.md)
 
         - [Introduction of Risk Management](Finance/FRM/Intro of Risk Management.md)
+        - [Quantitive Analysis](Finance/FRM/Quantitive Analysis.md)
 - [Technology](Technology/README.md)
 
     - [Basic Skills](Technology/Basic Skills/算法基础.md)
