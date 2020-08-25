@@ -2,7 +2,7 @@
 
 ## The Building Blocks of Risk Management
 
-**Risk**, in most basic sense, is the probability that bad things might happen;
+**Risk**, in the most basic sense, is the probability that bad things might happen;
 
 ### Risk Typology
 
@@ -30,9 +30,9 @@
 ```
 
 ### Credit Risk may increase if:
- - Less and large amount of loan instead of more and small amount of loan; 
+ - A less and large amount of loan instead of more and small amount of loan; 
  - The loans are highly positively correlated;
- - ~~Macroeconomics fall down~~ The expossure, loss given default and probability of default are positively correlated;
+ - ~~Macroeconomics fall down~~ The exposure, loss given default and the probability of default are positively correlated;
 
 
 ### Liquidity Risk is used to describe two separate risks:
@@ -48,8 +48,8 @@
 4. Manage
 
 ### A series of choices to deal with the risks:
-1. Avoid, change startegy to avoid potential risk;
-2. Retain, according to firm's appetite, to acheive more reward.
+1. Avoid, change strategy to avoid potential risk;
+2. Retain, according to firms' appetite, to achieve more reward.
 3. Mitigate, diversifying the asset, or using derivatives to hedge positions;
 4. Transfer, Eg. buying insurance. 
 
@@ -65,12 +65,12 @@ EL = LGD(Loss Given Default) \* Probability of Default(PD) \* Explosure at Defau
 
 ### VaR: Value at Risk;
   - Firstly used by JP morgan to assess the amount of loss in a given level of confidence;
-  - Fall down if tail is fat;
+  - Fall down if the tail is fat;
 
 ### 3 Lines to defend large Unexpected Loss:
 
 1. Business line risk management;
-2. Risk management commitee;
+2. Risk management Committee;
 3. Internal audit;
 
 ### Risk-adjusted return on capital(RAROC):
@@ -99,13 +99,13 @@ EL = LGD(Loss Given Default) \* Probability of Default(PD) \* Explosure at Defau
 ### Most institutions set two types of limits:
 
 1. Tier 1, risk that is specified, an overall limit by asset class;
-2. Tier 2, more generalized risk related areas of business activities;
+2. Tier 2, more generalized risk-related areas of business activities;
 
-## Moderan portfolio theory
+## Modern portfolio theory
 ### Efficient frontier of Markowitz
 Assumptions:
-  1. Investors are all rational(risk averse and want to maximize the utility);
-  2. Market is perfectly effcient(no extra trading cost and all infos are transaparent to all investors);
+  1. Investors are all rational(risk-averse and want to maximize the utility);
+  2. The market is perfectly efficient(no extra trading cost and all infomations are transparent to all investors);
   3. Returns are normally distributed;
 
 The Markowitz efficient frontier demonstrates the portfolios in the capital market which is possible have the minimum variance with the same return; 
@@ -114,14 +114,14 @@ The Markowitz efficient frontier demonstrates the portfolios in the capital mark
 
 ### Capital Asset Pricing Model
 
-The assumptions of CAPM are inherited from markowitz's efficient frontier:
+The assumptions of CAPM are inherited from Markowitz's efficient frontier:
 1. Freely Access to the info by all investors;
 2. No trading costs;
 3. Allocation can be made in investment in any partial amount(perfect diversibility);
-4. All investors can borrow or lend in Risk free rate;
+4. All investors can borrow or lend in Risk-free rate;
 5. Any individual investor can not affect the market prices;
 
-In CAPM, all portfolios are combined by risk free investment and the portfolios on the effecint frontier, which is completely divisified.
+In CAPM, all portfolios are combined by risk-free investment and the portfolios on the efficient frontier, which is completely diversified.
 
 ### Security Market Line(SML)
 The X-Axis is $$\beta$$, and the line describes the relation between expected return and the correlation of the market.
@@ -136,27 +136,27 @@ $$\beta_A = \dfrac{cov(A, B)}{\sigma_B^2} = \rho_{A,B} * \dfrac{\sigma_A}{\sigma
 
 $$SP = \dfrac{E(R) - E(f)}{\sigma_P}$$
 
-SR is to measure the performance of the portforlios which are not well divisified.
+SR is to measure the performance of the portfolios which are not well diversified.
 
 **Treynor Ratio**:
 
 $$TR = \dfrac{E(R)- E(f)}{\beta_P}$$
 
-TR is to measure the performance of the portfolios which are well divisified, and to measure the return based on the \beta.
+TR is to measure the performance of the portfolios which are well diversified, and to measure the return based on the \beta.
 
 **Sortino Ratio**:
 
 $$Sortino-Ratio = \dfrac{E(R) - MAR}{\sqrt{\dfrac{1}{N + 1}\displaystyle\sum_{t=1}^N}(R_t - MAR)^2} (R_{Pt} < MAR)$$
 
 MAR: Minimum Acceptable Return
-Sortino Ratio are widely used when the return distribution are left skewed.
+Sortino Ratio is widely used when the return distribution is left-skewed.
 
 
 **Jensen's Alpha**
 
 $$\alpha_P = E(R_P) - \beta_P * (E(M) - E(f)) - E(f)$$
 
-Jensen's alpha can be used to compare the portforlios which have the same $$\beta$$. 
+Jensen's alpha can be used to compare the portfolios which have the same $$\beta$$. 
 
 **Tracking Error**
 
@@ -170,11 +170,10 @@ $$IR = \dfrac{E(R) - E(R_B)}{\sigma(E(R) - E(R_B))} = \dfrac{\alpha_P}{\sigma(\a
 
 ### Arbitrary Pricing Theory(APT)
 
-Unlike the CAPM, the APT does not assume the investors invest on effecient portfolios. 
-
+Unlike the CAPM, the APT does not assume the investors invest on efficient portfolios. 
 The APT has 3 underlying assumptions:
-1. Specific Risk can be eliminated by divisification;
-2. There are no arbitrary opportunity for the investors, if any, will soon disapear;
+1. Specific Risk can be eliminated by diversification;
+2. There are no arbitrary opportunity for the investors, if any, will soon disappear;
 3. Asset returns can be explained by systematic factors;
 
 The APT can be described as:
@@ -182,7 +181,7 @@ $$E(R) = R_f + \sum\beta_iF_i$$
 
 ### CAPM and APT
 
-Actually, APT is more frequntly prefered because CAPM is a specail case of APT, as the market index is the only factor of its model. APT can include more factors not only the market index in its model. In addition, the calculation of correlation in CAPM is more complex(which needs $$N + \dfrac{N^2 - N}{2}$$ calculations), and the APT requires $$MN + \dfrac{M(M - 1)}{2}$$ calculations;
+Actually, APT is more frequently preferred because CAPM is a special case of APT, as the market index is the only factor of its model. APT can include more factors not only the market index in its model. In addition, the calculation of correlation in CAPM is more complex(which needs $$N + \dfrac{N^2 - N}{2}$$ calculations), and the APT requires $$MN + \dfrac{M(M - 1)}{2}$$ calculations;
 
 ### Fama-French Three Factor Model
 
@@ -190,7 +189,7 @@ Actually, APT is more frequntly prefered because CAPM is a specail case of APT, 
 2. HML: High Minus Low;
 3. M: Market Base Line;
 
-In 2016, Fama and French add two new factors: RMW(Robust Minus Weak) and CMA(Conservative Minus Aggressive), and with these two factors, Fama and French shows the HML fatcor is redundant then.
+In 2016, Fama and French add two new factors: RMW(Robust Minus Weak) and CMA(Conservative Minus Aggressive), and with these two factors, Fama and French shows the HML factor is redundant then.
 
 ### Effective Data Aggregation and Risk Reporting
 
