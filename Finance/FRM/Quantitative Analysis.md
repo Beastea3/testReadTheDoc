@@ -51,3 +51,47 @@ In this formula, the information adjustment factor is:
 $$\dfrac{P(A|B)}{P(A)}$$
 
 $P(B|A)$ is posterior probability and $P(A)$ is prior probability;
+
+## Random Variables and Basic Statistics
+
+### 2 Classes of Random Variables
+
+**Discrete random variable**, the set of values is finite and the set must be countable.
+
+* Probability Mass Function;
+* CDF(Cumulative distribution function): $F_x(x) = P(X\leq x)$
+
+**Continuous random variable** produces values from an un countable set.
+* $P(X=x) = 0$ even though x can occur;
+
+### Multivariate random variables
+
+This extends single random variable to include measures of dependence between two or more random variables. This can be either discrete or continuous;
+
+### Marginal distributions
+
+It shows a single side distribution based on only one variable;
+
+* Presented by $f_Y(y)$;
+
+### Conditional distributions
+
+Show the probability when a variable given;
+
+$f_{Y|X}(y|x=2)$ is a conditional distribution;
+
+### Independence
+
+The components of a bivariante random variable are independent if $f_{X,Y}(x,y)=f_X(x)\times f_Y(y)$;
+
+## Moments
+
+### Expectations
+
+### Variance
+
+### Skewness
+
+### Kurtosis
+
+### The BLUE mean estimator
