@@ -32,7 +32,7 @@ The probability above is a conditional probability which infers the probability 
 
 $$P(AB)$$
 
-The probability above infers the likelihood of event A and B happen at the same time, and we have formula to calculate this if event A and event B are **independent events**:
+The probability above infers the likelihood of event A and B happen at the same time, and we have the formula to calculate this if event A and event B are **independent events**:
 
 $$P(AB) = P(A)P(B)$$
 
