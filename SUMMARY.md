@@ -11,7 +11,7 @@
 - [Technology](Technology/README.md)
 
     - [Basic Skills](Technology/Basic Skills/算法基础.md)
-
+        - [Git better practices for teams](Technology/Basic Skills/Git better practices for teams.md)
         - [算法基础](Technology/Basic Skills/算法基础.md)
         - [Leetcode](Technology/Basic Skills/LeetCode.md)
         - [设计模式](Technology/Basic Skills/设计模式.md)
